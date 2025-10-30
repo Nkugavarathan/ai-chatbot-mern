@@ -7,12 +7,14 @@ import Community from "./pages/Community"
 function App() {
   return (
     <>
-      <div>
-        <div>
+      <div className="flex h-screen">
+        <div className="flex-1 bg-blue-400">
           <SideBar />
+        </div>
+        <div className="flex-3 bg-gray overflow-y-auto">
           <Routes>
             <Route path="/" element={<ChatBox />} />
-            <Route path="credits" element={<Credits />} />
+            <Route path="/credits" element={<Credits />} />
             <Route path="/community" element={<Community />} />
           </Routes>
         </div>
