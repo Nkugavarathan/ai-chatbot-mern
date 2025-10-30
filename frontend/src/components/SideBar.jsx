@@ -3,12 +3,17 @@ import { useAppContext } from "../context/AppContext"
 import { assets } from "../assets/assets"
 import moment from "moment"
 
-function SideBar() {
-  const { chats, navigate, theme, setTheme, user } = useAppContext()
+function SideBar({ isMenuOpen, setIsMenuOpen }) {
+  const { chats, navigate, theme, setSelectedChat, setTheme, user } =
+    useAppContext()
   const [search, setSearch] = useState("")
 
   return (
-    <div className="flex flex-col relative justify-between h-screen w-80 p-5">
+    <div
+      className={`flex flex-col justify-between h-screen w-80 p-5 bg-blue-400 transition-transform duration-300 absolute md:relative ${
+        isMenuOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
       {/* Top section */}
       <div className="flex flex-col items-center">
         {/* Logo / title */}
@@ -53,6 +58,11 @@ function SideBar() {
             .slice(0, 5) //  limit number of chats shown to keep page fixed
             .map((chat) => (
               <div
+                onClick={() => {
+                  navigate("/")
+                  setSelectedChat(chat)
+                  setIsMenuOpen(false)
+                }}
                 key={chat._id}
                 className="bg-blue-200 flex justify-between items-center p-3 rounded-md cursor-pointer hover:bg-blue-300 dark:hover:bg-white/10 transition w-full"
               >
@@ -70,7 +80,7 @@ function SideBar() {
                 <img
                   src={assets.bin_icon}
                   alt="delete"
-                  className="w-4 h-4 opacity-60 hover:opacity-100 transition"
+                  className="w-4 h-4 hover:opacity-100 transition "
                 />
               </div>
             ))}
@@ -81,7 +91,10 @@ function SideBar() {
       <div className="mt-3 flex flex-col gap-4 text-sm">
         {/* Community */}
         <div
-          onClick={() => navigate("/community")}
+          onClick={() => {
+            navigate("/community")
+            setIsMenuOpen(false)
+          }}
           className="flex items-center gap-3 cursor-pointer hover:opacity-80"
         >
           <img
@@ -94,7 +107,10 @@ function SideBar() {
 
         {/* Credits */}
         <div
-          onClick={() => navigate("/credits")}
+          onClick={() => {
+            navigate("/credits")
+            setIsMenuOpen(false)
+          }}
           className="flex items-center gap-3 cursor-pointer hover:opacity-80"
         >
           <img
@@ -150,6 +166,9 @@ function SideBar() {
         <img
           src={assets.close_icon}
           alt="close"
+          onClick={() => {
+            setIsMenuOpen(false)
+          }}
           className="absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert"
         />
       </div>
