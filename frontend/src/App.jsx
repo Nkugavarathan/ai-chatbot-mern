@@ -20,7 +20,7 @@ function App() {
       )}
 
       <div className="flex h-screen">
-        <div className="flex-1 bg-blue-400">
+        <div className="flex-1 ">
           <SideBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         </div>
         <div className="flex-3 bg-gray overflow-y-auto">

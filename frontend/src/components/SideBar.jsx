@@ -10,9 +10,12 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
 
   return (
     <div
-      className={`flex flex-col justify-between h-screen w-80 p-5 bg-blue-400 transition-transform duration-300 absolute md:relative ${
-        isMenuOpen ? "translate-x-0" : "-translate-x-full"
-      }`}
+      className={`flex flex-col justify-between h-screen w-80 p-5  ${
+        theme === "dark" ? "bg-blue-400" : "bg-amber-400"
+      }
+    
+    absolute md:relative md:translate-x-0
+    ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
     >
       {/* Top section */}
       <div className="flex flex-col items-center">
