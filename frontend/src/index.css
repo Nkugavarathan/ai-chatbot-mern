@@ -1,3 +1,7 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where (.dark,.dark *));
+
+.reset-tw:not(pre):not(code){
+    all:revert;
+}

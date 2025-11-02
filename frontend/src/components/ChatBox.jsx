@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useAppContext } from "../context/AppContext"
+import Message from "./Message"
 
 function ChatBox() {
   const { selectedChat, theme } = useAppContext()
@@ -30,6 +31,9 @@ function ChatBox() {
             </p>
           </div>
         )}
+        {messages.map((message, index) => (
+          <Message key={index} message={message} />
+        ))}
       </div>
     </div>
   )
