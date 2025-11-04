@@ -7,7 +7,10 @@ import Community from "./pages/Community"
 import { assets } from "./assets/assets"
 import "./assets/prism.css"
 import Loading from "./pages/Loading"
+import Login from "./pages/Login"
+import { useAppContext } from "./context/AppContext"
 function App() {
+  const { user } = useAppContext()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { pathname } = useLocation()
   if (pathname === "/loading") return <Loading />
@@ -22,18 +25,25 @@ function App() {
         />
       )}
 
-      <div className="flex h-screen">
-        <div className="flex-1 ">
-          <SideBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      {user ? (
+        <div className="flex h-screen">
+          <div className="flex-1 ">
+            <SideBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          </div>
+          <div className="flex-3 bg-gray dark:bg-[#0f0f17] overflow-y-auto">
+            <Routes>
+              <Route path="/" element={<ChatBox />} />
+              <Route path="/credits" element={<Credits />} />
+              <Route path="/community" element={<Community />} />
+              {/* <Route path="/login" element={<Login />} /> */}
+            </Routes>
+          </div>
         </div>
-        <div className="flex-3 bg-gray dark:bg-[#0f0f17] overflow-y-auto">
-          <Routes>
-            <Route path="/" element={<ChatBox />} />
-            <Route path="/credits" element={<Credits />} />
-            <Route path="/community" element={<Community />} />
-          </Routes>
+      ) : (
+        <div>
+          <Login />
         </div>
-      </div>
+      )}
     </>
   )
 }

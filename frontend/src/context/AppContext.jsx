@@ -36,25 +36,6 @@ export const AppContextProvider = ({ children }) => {
 
   //thme
 
-  // useEffect(() => {
-  //   if (theme === "dark") {
-  //     // document.documentElement.classList.add("dark")
-  //     document.body.classList.add("dark")
-  //   } else {
-  //     // document.documentElement.classList.remove("dark")
-  //     document.body.classList.remove("dark")
-  //   }
-  //   localStorage.setItem("theme", theme)
-  // }, [theme])
-  // useEffect(() => {
-  //   if (theme === "dark") {
-  //     document.body.classList.add("dark")
-  //   } else {
-  //     document.body.classList.remove("dark")
-  //   }
-  //   localStorage.setItem("theme", theme)
-  // }, [theme])
-
   useEffect(() => {
     document.documentElement.classList.toggle(
       "dark",
