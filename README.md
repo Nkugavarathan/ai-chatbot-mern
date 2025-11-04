@@ -1,11 +1,4 @@
 # 🚀 AI Chatbot — MERN · Google Gemini · ImageKit
-
----
-
-## 🔎 Recruiter / HR TL;DR
-- **One-line:** An AI-powered SaaS chatbot built with the MERN stack that generates text using **Google Gemini** and creates images using **ImageKit**, with secure authentication, credit-based payments, and production deployment.  
-- **Impact / Highlights:** Production-ready SaaS with user roles, payments, rate limits and usage accounting. Demonstrates full-stack skills: React/Next frontend, Express/Node API, MongoDB persistence, secure auth (JWT + refresh tokens), third-party AI integration, CDN image hosting, and CI/CD deployment.
-
 ---
 
 ## 🧭 Table of contents
@@ -22,8 +15,8 @@ A multi-tenant SaaS chatbot where users sign up, purchase credits, generate AI t
 ---
 
 ## 2. Screenshots & demo
- [Home Page light mode](./screenshots/home-light.JPG)
- [Home Page dark mode](./screenshots/dark-mode.JPG)
+ ![Home Page light mode](./screenshots/home-light.JPG)
+ ![Home Page dark mode](./screenshots/dark-mode.JPG)
 
 
 ---
