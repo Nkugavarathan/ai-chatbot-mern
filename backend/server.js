@@ -1,9 +1,13 @@
 import express from "express"
 import cors from "cors"
 import "dotenv/config"
+import connectDB from "./configs/db.js"
 
 //app initialization
 const app = express()
+
+//connect to database
+await connectDB()
 
 //portv
 const PORT = process.env.PORT || 3000
