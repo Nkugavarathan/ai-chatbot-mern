@@ -1,7 +1,23 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 function Loading() {
-  return <div>Loading</div>
+  const navigate = useNavigate()
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigate("/")
+    }, 6000)
+    return () => clearTimeout(timeout)
+  }, [])
+  return (
+    <div
+      className="bg-gradient-to-b from-blue-400 to-blue-600
+
+  backdrop-opacity-60  flex items-center justify-center h-screen w-screen text-white text-2xl"
+    >
+      <div className="w-10 h-10 rounded-full border-2 border-white border-t-transparent animate-spin "></div>
+    </div>
+  )
 }
 
 export default Loading

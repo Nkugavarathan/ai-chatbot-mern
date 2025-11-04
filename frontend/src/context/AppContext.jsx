@@ -44,6 +44,7 @@ export const AppContextProvider = ({ children }) => {
     }
     localStorage.setItem("theme", theme)
   }, [theme])
+  
   const value = {
     navigate,
     user,

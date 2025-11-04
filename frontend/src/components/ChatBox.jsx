@@ -7,6 +7,7 @@ function ChatBox() {
   const { selectedChat, theme } = useAppContext()
 
   const containerRef = useRef(null)
+
   const [messages, setMessages] = useState([])
   const [loading, setLoading] = useState(false)
   const [prompt, setPrompt] = useState("")
@@ -15,13 +16,15 @@ function ChatBox() {
   const [isPublished, setIsPublished] = useState(false)
 
   const onSubmit = async (e) => {
-    e.preventDefalut()
+    e.preventDefault()
   }
   useEffect(() => {
     if (selectedChat) {
       setMessages(selectedChat.messages)
     }
   }, [selectedChat])
+
+  // display latest msg in chat
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTo({
@@ -30,8 +33,9 @@ function ChatBox() {
       })
     }
   }, [messages])
+
   return (
-    <div className="flex-1 flex flex-col  m-5 md:m-10 xl:mx-30 max-md:mt-14 2xl:pr-40 h-screen ">
+    <div className=" relative flex-1 flex flex-col  m-5 md:m-10 xl:mx-30 max-md:mt-14 2xl:pr-40 h-screen  ">
       {/* chat messaages */}
       <div ref={containerRef} className="flex-1 mb-5 ">
         {messages.length === 0 && (
@@ -61,6 +65,7 @@ function ChatBox() {
         )}
       </div>
 
+      {/* checkbox publish image  */}
       {mode === "image" && (
         <label className="inline-flex items-center mb-3 gap-2 text-sm mx-auto">
           <p className="text-xs ">Publish Generated Image to Community </p>
@@ -72,10 +77,10 @@ function ChatBox() {
           />
         </label>
       )}
-      {/* prompt input */}
+      {/* prompt input  bg-primary/20*/}
 
       <form
-        className="bg-primary/20 dark:bg-[#583c79]/30 border border-primary dark:border-[#80609f]/30 rounded-full w-full max-w-2xxl p-3 pl-4 mx-auto flex items-center gap-4"
+        className="  sticky bottom-0  bg-amber-400 dark:bg-[#583c79]/30 border border-primary dark:border-[#80609f]/30 rounded-full  w-full max-w-2xxlp-3 pl-4 mx-auto flex items-center gap-4 "
         onSubmit={onSubmit}
       >
         <select
@@ -93,8 +98,8 @@ function ChatBox() {
         <input
           type="text"
           value={prompt}
-          onChange={() => setPrompt(e.target.value)}
-          className="flex-1 w-full text-sm outline-none"
+          onChange={(e) => setPrompt(e.target.value)}
+          className="flex-1 w-full text-sm outline-none "
           placeholder="Type your prompt here"
           required
         />

@@ -14,7 +14,7 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
         theme === "dark" ? "bg-blue-400" : "bg-amber-400"
       }
     
-    absolute md:relative md:translate-x-0
+    absolute md:relative md:translate-x-0 z-30
     ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
     >
       {/* Top section */}
