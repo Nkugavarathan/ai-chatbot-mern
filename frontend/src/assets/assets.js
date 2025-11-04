@@ -99,7 +99,7 @@ export const dummyChats = [
   {
     _id: "689de4bbaa932dc3a8ef6cd7",
     userId: "689c6deed410acddc0d95a0e",
-    userName: "GreatStack",
+    userName: "varathan",
     name: "New Chat",
     messages: [
       {
@@ -289,13 +289,13 @@ export const dummyChats = [
     ],
     createdAt: "2025-08-13T17:29:52.421Z",
     updatedAt: "2025-08-14T09:39:19.046Z",
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     _id: Date.now(),
     userId: "gs123456789",
     name: "New Chat",
-    userName: "GreatStack",
+    userName: "varathan",
     messages: [],
     createdAt: "2025-08-13T17:29:52.421Z",
     updatedAt: "2025-08-14T09:39:19.046Z",
@@ -305,46 +305,46 @@ export const dummyChats = [
 export const dummyPublishedImages = [
   {
     imageUrl: ai_image11,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image10,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image9,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image8,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image7,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image6,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image5,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image4,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image3,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image2,
-    userName: "GreatStack",
+    userName: "varathan",
   },
   {
     imageUrl: ai_image1,
-    userName: "GreatStack",
+    userName: "varathan",
   },
 ]
