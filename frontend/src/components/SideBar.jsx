@@ -7,40 +7,44 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
   const { chats, navigate, theme, setSelectedChat, setTheme, user } =
     useAppContext()
   const [search, setSearch] = useState("")
-
+  // ${theme === "dark" ? "bg-blue-400" : "bg-amber-400" bg-[#0f0f17]}
   return (
     <div
-      className={`flex flex-col justify-between h-screen w-80 p-5  ${
-        theme === "dark" ? "bg-blue-400" : "bg-amber-400"
-      }
-    
+      className={`flex flex-col justify-between h-screen w-80 p-5  
+       bg-blue-400 dark:bg-black
+   
     absolute md:relative md:translate-x-0 z-30
     ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
     >
       {/* Top section */}
       <div className="flex flex-col items-center">
         {/* Logo / title */}
-        <h1
+        {/* <h1
           className={`${
             theme === "dark" ? "text-white" : "text-black"
           } text-3xl font-bold text-center`}
         >
           MyGPT
+        </h1> */}
+        <h1 className="text-3xl font-bold text-center text-black dark:text-white">
+          MyGPT
         </h1>
-
         {/* New Chat button */}
-        <button className="mt-6 w-full flex justify-center  py-3 text-lg rounded-md cursor-pointer bg-blue-200 hover:bg-blue-300 transition">
+        <button
+          className="mt-6 w-full flex justify-center  py-3 text-lg rounded-md cursor-pointer bg-blue-200 hover:bg-blue-300 dark:bg-blue-900 dark:hover:bg-blue-800 dark:text-white
+ transition"
+        >
           <span className="mr-2 text-xl">+</span> New Chat
         </button>
 
         {/* Search bar */}
-        <div className="mt-6 flex items-center p-3 bg-blue-200 rounded-md w-full">
+        <div className="mt-6 flex items-center p-3 bg-blue-200 rounded-md w-full dark:bg-blue-900 dark:text-white">
           <input
             type="text"
             onChange={(e) => setSearch(e.target.value)}
             value={search}
             placeholder="Search conversations"
-            className="w-full text-sm bg-transparent placeholder:text-gray-500 outline-none"
+            className="w-full text-sm bg-transparent placeholder:text-gray-500 dark:placeholder:text-gray-100   outline-none"
           />
         </div>
 
@@ -67,7 +71,7 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
                   setIsMenuOpen(false)
                 }}
                 key={chat._id}
-                className="bg-blue-200 flex justify-between items-center p-3 rounded-md cursor-pointer hover:bg-blue-300 dark:hover:bg-white/10 transition w-full"
+                className="bg-blue-200 flex justify-between items-center p-3 rounded-md cursor-pointer hover:bg-blue-300 dark:bg-blue-900 dark:hover:bg-white/10 transition w-full"
               >
                 <div className="flex flex-col overflow-hidden">
                   <p className="truncate text-sm text-gray-800 dark:text-gray-200">
@@ -100,12 +104,8 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
           }}
           className="flex items-center gap-3 cursor-pointer hover:opacity-80"
         >
-          <img
-            src={assets.gallery_icon}
-            className="w-5 dark:invert"
-            alt="community"
-          />
-          <p>Community Images</p>
+          <img src={assets.gallery_icon} className="w-5 " alt="community" />
+          <p className="dark:text-white">Community Images</p>
         </div>
 
         {/* Credits */}
@@ -118,11 +118,11 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
         >
           <img
             src={assets.diamond_icon}
-            className="w-5 dark:invert"
+            className=" w-5 dark:invert" // dark:invert
             alt="credits"
           />
           <div>
-            <p>Credits: {user?.credits || 0}</p>
+            <p className="dark:text-white">Credits: {user?.credits || 0}</p>
             <p className="text-xs text-gray-700 dark:text-gray-400">
               Purchase credits to use MyGPT
             </p>
@@ -132,17 +132,14 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
         {/* Theme toggle */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img
-              src={assets.theme_icon}
-              className="w-5 dark:invert"
-              alt="theme"
-            />
-            <p>Dark Mode</p>
+            <img src={assets.theme_icon} className="w-5 " alt="theme" />
+            <p className="dark:text-white">Dark Mode</p>
           </div>
           <label className="relative inline-flex cursor-pointer items-center">
             <input
               type="checkbox"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              checked={theme === "dark"}
+              onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="sr-only peer"
             />
             <div className="w-9 h-5 bg-gray-400 rounded-full peer-checked:bg-blue-400 transition-all"></div>
@@ -153,13 +150,13 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
         {/* User */}
         <div className="flex items-center gap-2">
           <img src={assets.user_icon} className="w-7 rounded-full" alt="user" />
-          <p className="flex-1 truncate">
+          <p className="flex-1 truncate dark:text-white">
             {user ? user.name : "Login your account"}
           </p>
           {user && (
             <img
               src={assets.logout_icon}
-              className="h-5 cursor-pointer dark:invert"
+              className="h-5 cursor-pointer "
               alt="logout"
             />
           )}

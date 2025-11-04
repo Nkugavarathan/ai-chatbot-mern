@@ -36,15 +36,42 @@ export const AppContextProvider = ({ children }) => {
 
   //thme
 
+  // useEffect(() => {
+  //   if (theme === "dark") {
+  //     // document.documentElement.classList.add("dark")
+  //     document.body.classList.add("dark")
+  //   } else {
+  //     // document.documentElement.classList.remove("dark")
+  //     document.body.classList.remove("dark")
+  //   }
+  //   localStorage.setItem("theme", theme)
+  // }, [theme])
+  // useEffect(() => {
+  //   if (theme === "dark") {
+  //     document.body.classList.add("dark")
+  //   } else {
+  //     document.body.classList.remove("dark")
+  //   }
+  //   localStorage.setItem("theme", theme)
+  // }, [theme])
+
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark")
+    document.documentElement.classList.toggle(
+      "dark",
+      theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+    )
+
+    if (theme === "light") {
+      localStorage.theme = "light"
+    } else if (theme === "dark") {
+      localStorage.theme = "dark"
     } else {
-      document.documentElement.classList.remove("dark")
+      localStorage.removeItem("theme")
     }
-    localStorage.setItem("theme", theme)
   }, [theme])
-  
+
   const value = {
     navigate,
     user,

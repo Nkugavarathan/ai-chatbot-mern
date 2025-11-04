@@ -35,32 +35,30 @@ function ChatBox() {
   }, [messages])
 
   return (
-    <div className=" relative flex-1 flex flex-col  m-5 md:m-10 xl:mx-30 max-md:mt-14 2xl:pr-40 h-screen  ">
+    <div className=" relative flex-1 flex flex-col  md:m-10 xl:mx-30 max-md:mt-14 2xl:pr-40 h-screen  dark:bg-[#0f0f17] ">
       {/* chat messaages */}
       <div ref={containerRef} className="flex-1 mb-5 ">
         {messages.length === 0 && (
-          <div className="flex flex-col items-center justify-center h-screen">
-            <h1
-              className={`${
+          <div className="flex flex-col items-center justify-center h-screen text-black dark:text-white">
+            {/* {`${
                 theme === "dark" ? "text-white" : "text-black"
-              } text-3xl font-bold text-center`}
-            >
-              MyGPT
-            </h1>
+            `  } */}
+            <h1 className="text-3xl font-bold text-center">MyGPT</h1>
             <p className="mt-4 text-4xl sm:text-5xl text-center text-gray-400">
               Ask me anything
             </p>
           </div>
         )}
+        {/* msg.length>0  */}
         {messages.map((message, index) => (
           <Message key={index} message={message} />
         ))}
         {/* loading */}
         {loading && (
           <div className="loader flex items-center gap-1.5">
-            <div className="w-1.5 h-1.5 rounded-full dark:bg-white bg-gray-400 dark:bg-white animate-bounce"></div>
-            <div className="w-1.5 h-1.5 rounded-full dark:bg-white bg-gray-400 dark:bg-white animate-bounce"></div>
-            <div className="w-1.5 h-1.5 rounded-full dark:bg-white  bg-gray-400 dark:bg-white animate-bounce"></div>
+            <div className="w-1.5 h-1.5 rounded-full  bg-gray-400 dark:bg-white animate-bounce"></div>
+            <div className="w-1.5 h-1.5 rounded-full  bg-gray-400 dark:bg-white animate-bounce"></div>
+            <div className="w-1.5 h-1.5 rounded-full  bg-gray-400 dark:bg-white animate-bounce"></div>
           </div>
         )}
       </div>
@@ -68,7 +66,9 @@ function ChatBox() {
       {/* checkbox publish image  */}
       {mode === "image" && (
         <label className="inline-flex items-center mb-3 gap-2 text-sm mx-auto">
-          <p className="text-xs ">Publish Generated Image to Community </p>
+          <p className="text-xs dark:text-white">
+            Publish Generated Image to Community{" "}
+          </p>
           <input
             type="checkbox"
             className="cursor-pointer"
@@ -80,7 +80,7 @@ function ChatBox() {
       {/* prompt input  bg-primary/20*/}
 
       <form
-        className="  sticky bottom-0  bg-amber-400 dark:bg-[#583c79]/30 border border-primary dark:border-[#80609f]/30 rounded-full  w-full max-w-2xxlp-3 pl-4 mx-auto flex items-center gap-4 "
+        className="  sticky bottom-0  bg-blue-400 dark:bg-[#0f0f17] dark:text-white  border border-primary dark:border-[#80609f]/30 rounded-full  w-full max-w-2xxlp-3 pl-4 mx-auto flex items-center gap-4 "
         onSubmit={onSubmit}
       >
         <select
@@ -88,10 +88,10 @@ function ChatBox() {
           onChange={(e) => setMode(e.target.value)}
           value={mode}
         >
-          <option value="text" className="dark:bg-purple-900">
+          <option value="text" className="dark:bg-[#0f0f17]">
             Text
           </option>
-          <option className="dark:bg-purple-900" value="image">
+          <option className="dark:bg-[#0f0f17]" value="image">
             Image
           </option>
         </select>
@@ -99,7 +99,7 @@ function ChatBox() {
           type="text"
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          className="flex-1 w-full text-sm outline-none "
+          className="flex-1 w-full text-sm outline-none  "
           placeholder="Type your prompt here"
           required
         />

@@ -18,7 +18,7 @@ function App() {
           src={assets.menu_icon}
           alt="menu"
           onClick={() => setIsMenuOpen(true)}
-          className="absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden invert dark:invert-0 z-20"
+          className="absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden invert dark:invert z-20"
         />
       )}
 
@@ -26,7 +26,7 @@ function App() {
         <div className="flex-1 ">
           <SideBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         </div>
-        <div className="flex-3 bg-gray overflow-y-auto">
+        <div className="flex-3 bg-gray dark:bg-[#0f0f17] overflow-y-auto">
           <Routes>
             <Route path="/" element={<ChatBox />} />
             <Route path="/credits" element={<Credits />} />

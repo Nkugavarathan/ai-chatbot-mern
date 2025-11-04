@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { dummyPublishedImages } from "../assets/assets"
 import Loading from "./Loading"
+import { useAppContext } from "../context/AppContext"
 
 function Community() {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true) // loading true until recieve images
-
+  const { theme } = useAppContext()
   const fetchImages = async () => {
     setImages(dummyPublishedImages)
     setLoading(false)
@@ -13,11 +14,19 @@ function Community() {
   useEffect(() => {
     fetchImages()
   }, [])
-
+  //theme === "dark" ? "bg-blue-400" : "bg-amber-400"
   if (loading) return <Loading />
   return (
-    <div className="p-6 xl:px-12 2xl:px-20 w-full mx-auto h-full overflow-y-scroll">
+    <div
+      className="p-6 xl:px-12 2xl:px-20 w-full mx-auto h-full overflow-y-scroll 
+bg-white dark:bg-[#0f0f17] transition-colors duration-300"
+    >
       <h2 className="text-xl font-semibold mb-6 text-gray-700 dark:text-blue-700">
+        {/* <h2
+        className={`text-xl font-semibold mb-6 text-gray-700 ${
+          theme === "dark" ? "text-blue-700" : "text-gray-700"
+        }`}
+      > */}
         Community Images
       </h2>
       {images.length > 0 ? (
