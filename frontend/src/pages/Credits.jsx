@@ -40,7 +40,7 @@ bg-white dark:bg-[#0f0f17] transition-colors duration-300"
                 {plan.name}
               </h3>
               <p className="text-2xl font-bold text-blue-600 dark:text-blue-300 mb-4">
-                Rs {plan.price}
+                $ {plan.price}
                 <span className="text-base font-normal text-gray-600 dark:text-blue-200">
                   / {plan.credits} credits
                 </span>
