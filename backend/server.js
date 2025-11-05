@@ -3,6 +3,7 @@ import cors from "cors"
 import "dotenv/config"
 import connectDB from "./configs/db.js"
 import userRouter from "./routes/userRoutes.js"
+import chatRouter from "./routes/chatRoutes.js"
 
 //app initialization
 const app = express()
@@ -23,8 +24,12 @@ app.use(express.json())
 app.get("/", (req, res) => {
   res.send("Hello, World!")
 })
-
+//user route
 app.use("/api/user", userRouter)
+
+//chat route
+app.use("/api/chat", chatRouter)
+
 //start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
