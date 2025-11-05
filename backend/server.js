@@ -4,6 +4,7 @@ import "dotenv/config"
 import connectDB from "./configs/db.js"
 import userRouter from "./routes/userRoutes.js"
 import chatRouter from "./routes/chatRoutes.js"
+import messageRouter from "./routes/messageRouts.js"
 
 //app initialization
 const app = express()
@@ -29,6 +30,9 @@ app.use("/api/user", userRouter)
 
 //chat route
 app.use("/api/chat", chatRouter)
+
+//message route
+app.use("/api/message", messageRouter)
 
 //start server
 app.listen(PORT, () => {
