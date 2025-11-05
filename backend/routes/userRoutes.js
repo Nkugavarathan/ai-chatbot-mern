@@ -1,5 +1,6 @@
 import express from "express"
 import {
+  getPublishedImages,
   getUser,
   loginUser,
   registerUser,
@@ -14,5 +15,7 @@ userRouter.post("/login", loginUser)
 
 // protected route to get user data
 userRouter.get("/data", protect, getUser)
+
+userRouter.get("/published-images", protect, getPublishedImages)
 
 export default userRouter
