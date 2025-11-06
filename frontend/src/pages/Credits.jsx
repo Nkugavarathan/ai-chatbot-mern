@@ -15,6 +15,8 @@ function Credits() {
       const { data } = await axios.get("/api/credit/plan", {
         headers: { Authorization: token },
       })
+      console.log(data)
+
       if (data.success) {
         setPlans(data.plans)
       } else {
@@ -50,13 +52,13 @@ function Credits() {
 
   return (
     <div
-      className="max-w-7xl h-screen overflow-y-scroll mx-auto px-4 sm:px-6 lg:px-8 py-12
+      className="max-w-7xl h-screen overflow-y-scroll mx-auto px-4 sm:px-6 lg:px-8 
 bg-white dark:bg-[#0f0f17] transition-colors duration-300"
     >
-      <h2 className="text-3xl font-semibold text-center mb-10 xl:mt-30 text-gray-800 dark:text-white ">
+      <h2 className="text-3xl font-semibold text-center mb-4 xl:mt-30 text-gray-800 dark:text-white ">
         Credit Plans
       </h2>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap justify-center gap-4">
         {plans.map((plan) => (
           <div
             key={plan._id}

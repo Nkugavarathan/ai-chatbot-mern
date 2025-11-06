@@ -6,10 +6,17 @@ import userRouter from "./routes/userRoutes.js"
 import chatRouter from "./routes/chatRoutes.js"
 import messageRouter from "./routes/messageRouts.js"
 import creditRouter from "./routes/creditRoutes.js"
+import { stripeWebhooks } from "./controllers/webhooks.js"
 
 //app initialization
 const app = express()
 
+//stripe webhooks
+app.post(
+  "/api/stripe",
+  express.raw({ type: "application/json" }),
+  stripeWebhooks
+)
 //connect to database
 await connectDB()
 

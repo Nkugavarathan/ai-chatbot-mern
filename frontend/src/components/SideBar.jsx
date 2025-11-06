@@ -18,6 +18,7 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
     token,
     setToken,
   } = useAppContext()
+  console.log(user)
 
   //search
   const [search, setSearch] = useState("")
