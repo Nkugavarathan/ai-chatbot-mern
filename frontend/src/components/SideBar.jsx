@@ -94,7 +94,7 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
       <div
         className={`flex flex-col justify-between h-screen 
   w-72 md:w-80 p-5  
-  bg-blue-300 dark:bg-[#0f0f17]
+  bg-blue-300 dark:bg-black
   fixed md:relative top-0 left-0 z-50
   transition-transform duration-300
   ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}
