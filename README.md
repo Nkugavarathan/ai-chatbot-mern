@@ -1,43 +1,74 @@
-# 🚀 AI Chatbot — MERN · Google Gemini · ImageKit
----
+# 🚀 MyGPT - AI Chatbot Application (MERN + Gemini + ImageKit + Stripe)
 
-## 🧭 Table of contents
-1. Project overview  
-2. Screenshots & demo  
-3. Features  
-4. Tech stack  
+MyGPT is a full-stack AI chatbot application inspired by ChatGPT & Google Gemini.  
+Users can chat with AI, generate AI-images, and purchase credits securely using Stripe.  
+This project is built using **MERN Stack**, **Google Gemini AI**, **ImageKit**, and **Stripe Payments**.
 
 ---
 
-## 1. Project overview
-A multi-tenant SaaS chatbot where users sign up, purchase credits, generate AI text via **Google Gemini**, and create/host images via **ImageKit**. Includes usage accounting, admin controls, and payment webhooks.
+### 🌐 Live Demo  
+👉 (https://chatwithmygpt.vercel.app/)
+---
+
+## ✨ Features
+
+- 🔐 User Authentication (Signup / Login)
+- 💬 Real-Time AI Chat Responses
+- 🖼 AI-Image Generation using ImageKit
+- 💳 Buy Credits Online via Stripe Payment Gateway
+- 💾 Credits Stored per User in MongoDB
+- 🎨 Clean, Responsive UI with Tailwind CSS
+- 🌙 Light / Dark Mode Support
+- 🚀 Fully Deployed (Frontend + Backend)
 
 ---
 
-## 2. Screenshots & demo
+## 🛠 Tech Stack
+
+| Layer | Technologies |
+|------|--------------|
+| **Frontend** | React.js, Tailwind CSS, Axios, React Router, Context API |
+| **Backend** | Node.js, Express.js, MongoDB, Mongoose |
+| **AI Model** | Google Gemini (OpenAI compatible API) |
+| **Media Storage** | ImageKit |
+| **Payment Gateway** | Stripe |
+| **Deployment** | Vercel (Frontend), Render/Vercel (Backend) |
+
+---
+
+## 📸 Screenshots (Add your screenshots here)
  ![Home Page light mode](./screenshots/home-light.JPG)
  ![Home Page dark mode](./screenshots/dark-mode.JPG)
 
+---
+
+## 🔧 Environment Variables
+
+### Create a **.env** file in backend:
+- PORT=your_port
+- MONGO_URI=your_mongodb_url
+- JWT_SECRET=your_jwt_secret
+- STRIPE_SECRET_KEY=your_stripe_secret_key
+- STRIPE_WEBHOOKS_SECRET_KEY=your_webhook_key
+- GEMINI_API_KEY=your_gemini_api_key
+- IMAGEKIT_PUBLIC_KEY=your_public_key
+- IMAGEKIT_PRIVATE_KEY=your_private_key
+- IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_account/
 
 ---
 
-## 3. Key features
-- ✅ **AI text generation** with Google Gemini (server-side calls)  
-- ✅ **Image generation & CDN hosting** with ImageKit (uploads, transformations)  
-- ✅ **Secure auth**: email/password, JWT access + refresh tokens, password reset  
-- ✅ **Credit-based payments**: purchase credit packs (Stripe webhook integration)  
-- ✅ **Usage tracking & billing**: per-request credit deduction & quotas  
-- ✅ **Rate limiting & abuse protection**  
-- ✅ **Audit logs & moderation tools**
+## 🧠 Learning Outcomes
+- Learned how to integrate Google Gemini AI into MERN apps
+- Understood credit-based usage systems
+- Implemented secure Stripe Webhook Payment Flows
+- Improved skills in Full-Stack deployment and debugging
 
----
+## 🙌 Acknowledgements
+- This project was built with dedication, consistency & continuous learning.
+- Inspired by real-world AI apps and guided by platform documentation.
 
-## 4. Tech stack
-- **Frontend:** React or Next.js, Tailwind CSS  
-- **Backend:** Node.js, Express  
-- **Database:** MongoDB (Atlas)  
-- **Auth:** JWT + refresh tokens, secure cookies  
-- **AI:** Google Gemini (server-side API)  
-- **Images:** ImageKit (upload + CDN + transformations)  
-- **Payments:** Stripe  
-- **Hosting** Vercel
+## "Keep Building. Keep Learning. Keep Growing." ✨
+
+## ⭐ Show Support
+If you like this project, consider giving it a star ⭐ on GitHub!
+It motivates me to create more awesome full-stack projects.
