@@ -20,6 +20,8 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
   } = useAppContext()
   console.log(user)
 
+  //select active chat
+  const [activeChat, setActiveChat] = useState(null)
   //search
   const [search, setSearch] = useState("")
 
@@ -77,7 +79,7 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
   return (
     <div
       className={`flex flex-col justify-between h-screen w-80 p-5  
-       bg-blue-400 dark:bg-black
+       bg-blue-300 dark:bg-black
    
     absolute md:relative md:translate-x-0 z-30
     ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
@@ -143,9 +145,16 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
                   navigate("/")
                   setSelectedChat(chat)
                   setIsMenuOpen(false)
+                  setActiveChat(chat._id)
                 }}
                 key={chat._id}
-                className="bg-blue-200 flex justify-between items-center p-3 rounded-md cursor-pointer hover:bg-blue-300 dark:bg-blue-900 dark:hover:bg-white/10 transition w-full"
+                className={`flex justify-between items-center p-3 rounded-md cursor-pointer transition w-full
+    ${
+      activeChat === chat._id
+        ? "bg-blue-400 dark:bg-blue-700" // SELECTED STATE
+        : "bg-blue-200 hover:bg-blue-300 dark:bg-blue-900 dark:hover:bg-white/10"
+    }
+  `}
               >
                 <div className="flex flex-col overflow-hidden">
                   <p className="truncate text-sm text-gray-800 dark:text-gray-200">
@@ -158,12 +167,7 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
                     {/* {moment(chat.updatedAt).fromNow()}{" "} */}
                   </p>
                 </div>
-                {/* <img
-                  onClick={(e) => deleteChat(e, chat._id)}
-                  src={assets.bin_icon}
-                  alt="delete"
-                  className="w-4 h-4 hover:opacity-100 transition "
-                /> */}
+
                 <img
                   onClick={(e) =>
                     toast.promise(deleteChat(e, chat._id), {
