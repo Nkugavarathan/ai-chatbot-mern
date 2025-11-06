@@ -1,18 +1,50 @@
 import React, { useEffect, useState } from "react"
 import { dummyPlans } from "../assets/assets"
 import Loading from "./Loading"
+import { useAppContext } from "../context/AppContext"
+import toast from "react-hot-toast"
 
 function Credits() {
   const [plans, setPlans] = useState([])
   const [loading, setLoading] = useState(true)
-
+  const { token, axios } = useAppContext()
   const fetchPlans = async () => {
-    setPlans(dummyPlans)
+    // setPlans(dummyPlans)
+    // setLoading(false)
+    try {
+      const { data } = await axios.get("/api/credit/plan", {
+        headers: { Authorization: token },
+      })
+      if (data.success) {
+        setPlans(data.plans)
+      } else {
+        toast.error(data.message || "Failed to fetch plans")
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
     setLoading(false)
   }
   useEffect(() => {
     fetchPlans()
   }, [])
+
+  const purchasePlan = async (planId) => {
+    try {
+      const { data } = await axios.post(
+        "/api/credit/purchase",
+        { planId },
+        { headers: { Authorization: token } }
+      )
+      if (data.success) {
+        window.location.href = data.url
+      } else {
+        toast.error(data.message || "Failed to payment")
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
 
   if (loading) return <Loading />
 
@@ -58,7 +90,14 @@ space-y-1
                 ))}
               </ul>
             </div>
-            <button className="mt-6 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium py-2 rounded transition-colors cursor-pointer">
+            <button
+              onClick={() =>
+                toast.promise(purchasePlan(plan._id), {
+                  loading: "processing ...",
+                })
+              }
+              className="mt-6 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium py-2 rounded transition-colors cursor-pointer"
+            >
               Buy Now
             </button>
           </div>
