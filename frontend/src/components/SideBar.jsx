@@ -18,7 +18,10 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
     token,
     setToken,
   } = useAppContext()
+
+  //search
   const [search, setSearch] = useState("")
+
   //logout
   const logout = () => {
     localStorage.removeItem("token")
@@ -60,6 +63,13 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
     }
   }
 
+  //filter chats
+  const filteredChats = chats.filter((chat) =>
+    (chat.messages[0]?.content || chat.name)
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  )
+
   // ${theme === "dark" ? "bg-blue-400" : "bg-amber-400" bg-[#0f0f17]}
   return (
     <div
@@ -90,7 +100,6 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
         >
           <span className="mr-2 text-xl">+</span> New Chat
         </button>
-
         {/* Search bar */}
         <div className="mt-6 flex items-center p-3 bg-blue-200 rounded-md w-full dark:bg-blue-900 dark:text-white">
           <input
@@ -101,11 +110,22 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
             className="w-full text-sm bg-transparent placeholder:text-gray-500 dark:placeholder:text-gray-100   outline-none"
           />
         </div>
-
         {/* Chat list */}
         {chats.length > 0 && (
           <p className="mt-6 mb-3 text-sm text-white uppercase tracking-wide self-start">
             Recent Chats
+          </p>
+        )}
+
+        {chats.length === 0 && (
+          <p className="text-sm text-gray-700 dark:text-gray-300 mt-4">
+            No chats yet
+          </p>
+        )}
+
+        {search && filteredChats.length === 0 && (
+          <p className="text-sm text-gray-700 dark:text-gray-300 mt-4">
+            No search results found
           </p>
         )}
 
@@ -134,7 +154,8 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
                       : chat.name}
                   </p>
                   <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
-                    {chat.updatedAt ? moment(chat.updatedAt).fromNow() : ""}
+                    {/* {chat.updatedAt ? moment(chat.updatedAt).fromNow() : ""} */}
+                    {moment(chat.updatedAt).fromNow()}{" "}
                   </p>
                 </div>
 
