@@ -168,7 +168,7 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
     ${
       activeChat === chat._id
         ? "bg-blue-400 dark:bg-blue-700" // SELECTED STATE
-        : "bg-blue-200 hover:bg-blue-300 dark:bg-blue-900 dark:hover:bg-white/10"
+        : "bg-blue-200 hover:bg-blue-400 dark:bg-blue-900 dark:hover:bg-white/30"
     }
   `}
                 >
