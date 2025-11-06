@@ -14,11 +14,7 @@ import { stripeWebhooks } from "./controllers/webhooks.js"
 const app = express()
 
 //stripe webhooks
-// app.post(
-//   "/api/stripe",
-//   bodyParser.raw({ type: "application/json" }),
-//   stripeWebhooks
-// )
+
 app.post(
   "/api/stripe",
   express.raw({ type: "application/json" }),

@@ -80,7 +80,10 @@ function ChatBox() {
   }, [messages])
 
   return (
-    <div className=" relative flex-1 flex flex-col  md:m-10 xl:mx-30 max-md:mt-14 2xl:pr-40 h-screen  dark:bg-[#0f0f17] ">
+    <div
+      className="flex-1 flex flex-col h-screen  dark:bg-[#0f0f17]
+  "
+    >
       {/* chat messaages */}
       <div ref={containerRef} className="flex-1 mb-5 ">
         {messages.length === 0 && (
@@ -149,11 +152,12 @@ function ChatBox() {
           required
         />
         <button disabled={loading}>
+          {" "}
           <img
             src={loading ? assets.stop_icon : assets.send_icon}
             alt=""
             className="w-8 cursor-pointer"
-          />
+          />{" "}
         </button>
       </form>
     </div>

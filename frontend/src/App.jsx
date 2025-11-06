@@ -10,6 +10,8 @@ import Loading from "./pages/Loading"
 import Login from "./pages/Login"
 import { useAppContext } from "./context/AppContext"
 import { Toaster } from "react-hot-toast"
+// import { ReactComponent as MenuIcon } from "../src/assets/menu_icon.svg"
+import MenuIcon from "./assets/menu_icon.svg?react"
 
 function App() {
   const { user, loadingUser } = useAppContext()
@@ -21,18 +23,16 @@ function App() {
     <>
       {/* use toaster anywhere */}
       <Toaster />
+
       {!isMenuOpen && (
-        <img
-          src={assets.menu_icon}
-          alt="menu"
+        <MenuIcon
           onClick={() => setIsMenuOpen(true)}
-          className="absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden invert dark:invert z-20"
+          className="absolute top-3 left-3 w-8 h-8 cursor-pointer md:hidden  dark:text-white transition-colors z-20"
         />
       )}
-
       {user ? (
-        <div className="flex h-screen">
-          <div className="flex-1 ">
+        <div className="flex h-screen relative overflow-hidden">
+          <div className="">
             <SideBar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
           </div>
           <div className="flex-3 bg-gray dark:bg-[#0f0f17] overflow-y-auto">
