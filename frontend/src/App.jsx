@@ -16,6 +16,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { pathname } = useLocation()
   if (pathname === "/loading" || loadingUser) return <Loading />
+
   return (
     <>
       {/* use toaster anywhere */}
