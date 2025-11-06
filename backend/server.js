@@ -6,17 +6,25 @@ import userRouter from "./routes/userRoutes.js"
 import chatRouter from "./routes/chatRoutes.js"
 import messageRouter from "./routes/messageRouts.js"
 import creditRouter from "./routes/creditRoutes.js"
+
+import bodyParser from "body-parser"
 import { stripeWebhooks } from "./controllers/webhooks.js"
 
 //app initialization
 const app = express()
 
 //stripe webhooks
+// app.post(
+//   "/api/stripe",
+//   bodyParser.raw({ type: "application/json" }),
+//   stripeWebhooks
+// )
 app.post(
   "/api/stripe",
   express.raw({ type: "application/json" }),
   stripeWebhooks
 )
+
 //connect to database
 await connectDB()
 
@@ -27,7 +35,15 @@ const PORT = process.env.PORT || 3000
 app.use(cors())
 
 //body parser middleware for accepting json data
-app.use(express.json())
+
+// JSON middleware but skip Stripe webhook to avoid parsing body
+app.use((req, res, next) => {
+  if (req.originalUrl === "/api/stripe") {
+    next()
+  } else {
+    express.json()(req, res, next)
+  }
+})
 
 //routes
 app.get("/", (req, res) => {

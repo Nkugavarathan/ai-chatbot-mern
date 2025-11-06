@@ -71,6 +71,8 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
       .includes(search.toLowerCase())
   )
 
+  console.log("chat.updatedAt:", chats.updatedAt)
+
   // ${theme === "dark" ? "bg-blue-400" : "bg-amber-400" bg-[#0f0f17]}
   return (
     <div
@@ -117,19 +119,16 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
             Recent Chats
           </p>
         )}
-
         {chats.length === 0 && (
           <p className="text-sm text-gray-700 dark:text-gray-300 mt-4">
             No chats yet
           </p>
         )}
-
         {search && filteredChats.length === 0 && (
           <p className="text-sm text-gray-700 dark:text-gray-300 mt-4">
             No search results found
           </p>
         )}
-
         <div className="w-full space-y-2">
           {chats
             .filter((chat) =>
@@ -155,11 +154,10 @@ function SideBar({ isMenuOpen, setIsMenuOpen }) {
                       : chat.name}
                   </p>
                   <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
-                    {/* {chat.updatedAt ? moment(chat.updatedAt).fromNow() : ""} */}
-                    {moment(chat.updatedAt).fromNow()}{" "}
+                    {chat.updatedAt ? moment(chat.updatedAt).fromNow() : ""}
+                    {/* {moment(chat.updatedAt).fromNow()}{" "} */}
                   </p>
                 </div>
-
                 {/* <img
                   onClick={(e) => deleteChat(e, chat._id)}
                   src={assets.bin_icon}
