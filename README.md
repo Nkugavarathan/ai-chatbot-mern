@@ -44,12 +44,6 @@ This project is built using **MERN Stack**, **Google Gemini AI**, **ImageKit**, 
 
 ---
 
-## 📸 Screenshots (Add your screenshots here)
- ![Home Page light mode](./screenshots/home-light.JPG)
- ![Home Page dark mode](./screenshots/dark-mode.JPG)
-
----
-
 ## 🔧 Environment Variables
 
 ### Create a **.env** file in backend:
@@ -62,7 +56,6 @@ This project is built using **MERN Stack**, **Google Gemini AI**, **ImageKit**, 
 - IMAGEKIT_PUBLIC_KEY=your_public_key
 - IMAGEKIT_PRIVATE_KEY=your_private_key
 - IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_account/
-
 ---
 
 ## 🧠 Learning Outcomes
