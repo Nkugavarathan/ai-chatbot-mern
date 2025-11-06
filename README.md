@@ -9,7 +9,16 @@ This project is built using **MERN Stack**, **Google Gemini AI**, **ImageKit**, 
 ### 🌐 Live Demo  
 👉 (https://chatwithmygpt.vercel.app/)
 ---
+## 🎥 Demo Video
 
+[![Watch Demo on YouTube]](https://youtu.be/Tme750CeSyM)
+
+- 🖼️ **Screenshots:**
+  [Home light mode](./screenshots/home-light.JPG)
+  [Home dark mode](./screenshots/dark-mode.JPG)
+  [Credits](./screenshots/credits.JPG)
+  [Generaded images](./screenshots/generated-images.JPG)
+---
 ## ✨ Features
 
 - 🔐 User Authentication (Signup / Login)
